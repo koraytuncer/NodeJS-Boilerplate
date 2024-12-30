@@ -8,7 +8,7 @@ import * as config from "./configs/index.js";
 import * as db from "./loaders/index.js";
 import setupEventListener from "./events/index.js";
 import "./scripts/CronJob.js";
-import {UserRoute} from "./routes/index.js";
+import routeManager from "./routes/index.js";
 
 // Server config
 config.serverConfig();
@@ -33,7 +33,7 @@ app.use(cors());
 app.use(fileupload());
 
 // Routes
-app.use("/users", UserRoute);
+app.use("/", routeManager);
 
 //Server Start
 app.listen(process.env.APP_PORT, () => {
